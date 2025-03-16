@@ -420,7 +420,7 @@ LineRenderer:
     shadowBias: 0.5
     generateLightingData: 0
   m_MaskInteraction: 0
-  m_UseWorldSpace: 0
+  m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
 --- !u!1 &7946920283839840689
@@ -569,6 +569,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   _grabRadius: 2
+  _line: {fileID: 6559286774739518214}
+  _linePointsCount: 5
+  _bezierOffset: 0.1
 --- !u!1 &8655709480492847309
 GameObject:
   m_ObjectHideFlags: 0
