@@ -17,7 +17,7 @@ namespace Player
 
         public override void Enter()
         {
-
+            _manager.Rigidbody.linearVelocity = Vector2.zero;
         }
 
         public override void TransitionCheck()
