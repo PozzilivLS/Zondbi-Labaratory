@@ -10,9 +10,11 @@ namespace Additions
 
         private bool _isInteract;
         private bool _isDragObject;
+        private bool _isPaused;
 
         public bool IsInteract => _isInteract;
         public bool IsDragObject => _isDragObject;
+        public bool IsPaused => _isPaused;
         public Vector2 MoveDirection => _moveDirection;
 
         private void Awake()
@@ -32,6 +34,8 @@ namespace Additions
 
             _inputActions.Player.DragObject.started += OnPlayerStartDragObject;
             _inputActions.Player.DragObject.canceled += OnPlayerStopDragObject;
+
+            _inputActions.Player.MenuInGame.started += OnPlayerInteractWithMenu;
         }
 
         private void OnPlayerStartDragObject(InputAction.CallbackContext context)
@@ -57,6 +61,11 @@ namespace Additions
         private void OnPlayerMove(InputAction.CallbackContext context)
         {
             _moveDirection = _inputActions.Player.Move.ReadValue<Vector2>();
+        }
+
+        private void OnPlayerInteractWithMenu(InputAction.CallbackContext context) 
+        {
+            _isPaused = !_isPaused;
         }
 
         private void OnDisable()
