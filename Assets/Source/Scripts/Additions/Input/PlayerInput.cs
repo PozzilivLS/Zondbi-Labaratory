@@ -11,6 +11,8 @@ namespace Additions
         private bool _isInteract;
         private bool _isDragObject;
 
+        public event Event<bool> GrabStateChanged;
+
         public bool IsInteract => _isInteract;
         public bool IsDragObject => _isDragObject;
         public Vector2 MoveDirection => _moveDirection;
@@ -36,12 +38,12 @@ namespace Additions
 
         private void OnPlayerStartDragObject(InputAction.CallbackContext context)
         {
-            _isDragObject = true;
+            GrabStateChanged?.Invoke(true);
         }
 
         private void OnPlayerStopDragObject(InputAction.CallbackContext context)
         {
-            _isDragObject = false;
+            GrabStateChanged?.Invoke(false);
         }
 
         private void OnPlayerBeginInteract(InputAction.CallbackContext context)
