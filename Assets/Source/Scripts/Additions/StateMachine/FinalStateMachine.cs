@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace StateMachine
 {
-    public class StateMachine
+    public class FinalStateMachine
     {
         public State CurrentState;
 

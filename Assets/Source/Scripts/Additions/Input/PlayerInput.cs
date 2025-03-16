@@ -6,19 +6,19 @@ namespace Additions
     public class PlayerInput : MonoBehaviour
     {
         private InputSystem_Actions _inputActions;
-        private Vector2 _playerDirection;
+        private Vector2 _moveDirection;
 
         private bool _isInteract;
         private bool _isDragObject;
 
         public bool IsInteract => _isInteract;
         public bool IsDragObject => _isDragObject;
-        public Vector2 PlayerDirection => _playerDirection;
+        public Vector2 MoveDirection => _moveDirection;
 
         private void Awake()
         {
             _inputActions = new InputSystem_Actions();
-            _playerDirection = new Vector2();
+            _moveDirection = new Vector2();
             _inputActions.Enable();
         }
 
@@ -56,7 +56,7 @@ namespace Additions
 
         private void OnPlayerMove(InputAction.CallbackContext context)
         {
-            _playerDirection = _inputActions.Player.Move.ReadValue<Vector2>();
+            _moveDirection = _inputActions.Player.Move.ReadValue<Vector2>();
         }
 
         private void OnDisable()
