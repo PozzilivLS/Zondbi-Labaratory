@@ -1,0 +1,16 @@
+{
+    "name": "Menu",
+    "rootNamespace": "",
+    "references": [
+        "GUID:4e23378d58f01a048bd92641106debc6"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
