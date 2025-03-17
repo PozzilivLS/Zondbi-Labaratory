@@ -803,12 +803,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6559286774739518214, guid: e855b2a061db4254a8f446ce9763d142, type: 3}
-      propertyPath: m_Parameters.textureMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6559286774739518214, guid: e855b2a061db4254a8f446ce9763d142, type: 3}
       propertyPath: m_Parameters.widthMultiplier
-      value: 0.5
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6559286774739518214, guid: e855b2a061db4254a8f446ce9763d142, type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.size
