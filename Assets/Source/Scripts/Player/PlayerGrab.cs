@@ -37,17 +37,16 @@ namespace Player
         {
             if (_isGrabbing && _grabObject != null)
             {
-                Vector3 directionFromPlayer = _input.MoveDirection;
-                Vector3 directionFromObject = _grabObjectRb.linearVelocity.normalized;
+                Vector3 directionFromObject = _grabRb.linearVelocity.normalized;
+                float objectSpeed = _grabRb.linearVelocity.magnitude;
 
-                Vector2 playerOffsetPoint = transform.position + directionFromPlayer * _bezierOffset;
-                Vector2 objectOffsetPoint = _grabObject.position + directionFromObject * _bezierOffset;
+                Vector2 objectOffsetPoint = _grabObject.position + directionFromObject * _bezierOffset * objectSpeed;
 
                 for (int i = 0; i < _linePointsCount; i++)
                 {
                     float t = i / (float)(_linePointsCount - 1);
 
-                    _line.SetPosition(i, BezierCurveByT(transform.position, playerOffsetPoint, objectOffsetPoint, _grabObject.position, t));
+                    _line.SetPosition(i, BezierCurveByT(transform.position, objectOffsetPoint, _grabObject.position, t));
                 }
             }
         }
@@ -71,15 +70,16 @@ namespace Player
                 return;
             }
 
-            float minDistance = hits[0].distance;
+            float minDistance = (transform.position - hits[0].collider.transform.position).sqrMagnitude;
             RaycastHit2D nearestHit = hits[0];
 
             foreach (RaycastHit2D hit in hits)
             {
-                if (hit.distance < minDistance)
+                float distance = (transform.position - hit.collider.transform.position).sqrMagnitude;
+                if (distance < minDistance)
                 {
                     nearestHit = hit;
-                    minDistance = hit.distance;
+                    minDistance = distance;
                 }
             }
 
@@ -111,10 +111,9 @@ namespace Player
             _line.positionCount = 0;
         }
 
-        private Vector2 BezierCurveByT(Vector2 pos1,  Vector2 pos2, Vector2 pos3, Vector2 pos4, float t)
+        private Vector2 BezierCurveByT(Vector2 pos1,  Vector2 pos2, Vector2 pos3, float t)
         {
-            print(3 * t * (1 - t) * (1 - t));
-            return ((1 - t) * (1 - t) * (1 - t) * pos1) + (3 * t * (1 - t) * (1 - t) * pos2) + (3 * t * t * (1 - t) * pos3) + (t * t * t * pos4);
+            return ((1 - t) * (1 - t) * pos1) + (2 * t *  (1 - t) * pos2) + (t * t * pos3);
         }
 
         private void OnDrawGizmos()

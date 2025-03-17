@@ -251,7 +251,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 5
   m_AngularDamping: 2
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -565,8 +565,8 @@ MonoBehaviour:
     m_Bits: 128
   _grabRadius: 2
   _line: {fileID: 6559286774739518214}
-  _linePointsCount: 5
-  _bezierOffset: 0.1
+  _linePointsCount: 10
+  _bezierOffset: 0.35
 --- !u!1 &8655709480492847309
 GameObject:
   m_ObjectHideFlags: 0
