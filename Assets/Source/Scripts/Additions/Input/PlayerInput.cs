@@ -9,13 +9,12 @@ namespace Additions
         private Vector2 _moveDirection;
 
         private bool _isInteract;
-        private bool _isDragObject;
         private bool _isPaused;
 
         public event Event<bool> GrabStateChanged;
+        public event Event<bool> PauseStateChanged;
 
         public bool IsInteract => _isInteract;
-        public bool IsDragObject => _isDragObject;
         public bool IsPaused => _isPaused;
         public Vector2 MoveDirection => _moveDirection;
 
@@ -68,6 +67,7 @@ namespace Additions
         private void OnPlayerInteractWithMenu(InputAction.CallbackContext context) 
         {
             _isPaused = !_isPaused;
+            PauseStateChanged?.Invoke(_isPaused);
         }
 
         private void OnDisable()

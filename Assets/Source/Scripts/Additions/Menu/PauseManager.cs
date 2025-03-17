@@ -1,30 +1,34 @@
 using UnityEngine;
+using Additions;
 
-namespace Additions
+namespace Menu
 {
     public class PauseManager : MonoBehaviour
     {
         [SerializeField] private Canvas _pauseCanvas;
         [SerializeField] private PlayerInput _playerInput;
 
-        private void Update()
+        private void OnEnable() 
         {
-            PauseGame();
+            _playerInput.PauseStateChanged += OnPauseGame;
         }
 
-        private void PauseGame()
+        private void OnDisable()
         {
-            if (_playerInput.IsPaused)
+            _playerInput.PauseStateChanged -= OnPauseGame;
+        }
+
+        private void OnPauseGame(bool pauseState)
+        {
+            if (pauseState)
             {
                 if (_pauseCanvas.gameObject.activeInHierarchy is true) return;
-                print("paused");
                 _pauseCanvas.gameObject.SetActive(true);
                 Time.timeScale = 0f;
             }
             else
             {
                 if (_pauseCanvas.gameObject.activeInHierarchy is false) return;
-                print("not paused");
                 _pauseCanvas.gameObject.SetActive(false);
                 Time.timeScale = 1f;
             }
