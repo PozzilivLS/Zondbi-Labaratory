@@ -7,6 +7,7 @@ namespace Player
     public class PlayerManager : MonoBehaviour
     {
         [SerializeField] private PlayerInput _input;
+        [SerializeField] private PlayerGrab _grab;
         [SerializeField] private Rigidbody2D _rigidbody2D;
 
         [SerializeField] private float _moveSpeed = 3f;
@@ -28,6 +29,8 @@ namespace Player
             WorkState = new PlayerWorkState(this);
 
             _stateMachine.Initialize(IdleState);
+
+            _grab.Initialize(_input);
         }
 
         private void Update()
