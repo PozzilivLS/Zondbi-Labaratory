@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using Items;
 
@@ -5,6 +6,11 @@ namespace Triggers
 {
     public class FireplaceLogic : MonoBehaviour
     {
+        [Header("Item parameters")]
+        [SerializeField] private Transform _targetPosition;
+        [SerializeField] private float _durationMove = 2f;
+        [SerializeField] private AnimationCurve _curveWay;
+
         private bool _potionInTrigger;
         private Item _activePotion;
 
@@ -12,7 +18,22 @@ namespace Triggers
         {
             if (_potionInTrigger && IsDrag is false)
             {
-                print("Dropped");
+                StartCoroutine(MoveToTarget());
+            }
+        }
+
+        private IEnumerator MoveToTarget()
+        {
+            var startPosition = _activePotion.transform.position;
+            var elapsedTime = 0f;
+
+            while (elapsedTime <= 1f)
+            {
+                elapsedTime += Time.deltaTime / _durationMove;
+                var curveValue = _curveWay.Evaluate(elapsedTime);
+
+                _activePotion.transform.position = Vector2.Lerp(startPosition, _targetPosition.position, curveValue);
+                yield return null;
             }
         }
 
