@@ -63,7 +63,7 @@ namespace Player
         {
             RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, _grabRadius, Vector2.zero, 0f, _layerMask);
 
-            if (hits.Length == 0 )
+            if (hits.Length == 0)
             {
                 return;
             }
