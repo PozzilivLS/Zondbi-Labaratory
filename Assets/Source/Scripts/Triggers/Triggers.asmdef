@@ -1,8 +1,9 @@
 {
-    "name": "Items",
-    "rootNamespace": "Items",
+    "name": "Triggers",
+    "rootNamespace": "",
     "references": [
-        "GUID:4e23378d58f01a048bd92641106debc6"
+        "GUID:4e23378d58f01a048bd92641106debc6",
+        "GUID:62eca0a19f3d96e40bb9e09117875480"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

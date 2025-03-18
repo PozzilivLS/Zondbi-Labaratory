@@ -1,5 +1,5 @@
+using Items;
 using Additions;
-using System;
 using UnityEngine;
 
 namespace Player
@@ -17,10 +17,11 @@ namespace Player
         [SerializeField] private float _bezierOffset;
 
         private PlayerInput _input;
+        private Item _item;
 
         private Transform _grabObject;
         private Rigidbody2D _grabObjectRb;
-        bool _isGrabbing = false;
+        private bool _isGrabbing = false;
 
         internal void Initialize(PlayerInput input)
         {
@@ -84,6 +85,9 @@ namespace Player
 
             _grabObject = nearestHit.collider.transform.parent;
 
+            _item = _grabObject.GetComponent<Item>();
+            _item.HasGrabbed();
+
             _grabParent.position = _grabObject.position;
 
             _grabObject.parent = _grabParent;
@@ -104,6 +108,9 @@ namespace Player
 
             }
             _isGrabbing = false;
+
+            _item.DropItem();
+            _item = null;
 
             _grabObject = null;
 
