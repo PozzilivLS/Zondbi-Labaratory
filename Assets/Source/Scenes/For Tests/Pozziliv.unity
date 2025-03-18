@@ -274,7 +274,7 @@ MonoBehaviour:
   IgnoreTimeScale: 0
   WorldUpOverride: {fileID: 0}
   ChannelMask: -1
-  UpdateMethod: 2
+  UpdateMethod: 0
   BlendUpdateMethod: 1
   LensModeOverride:
     Enabled: 0
@@ -881,6 +881,10 @@ PrefabInstance:
     - target: {fileID: 1888272135873734528, guid: e855b2a061db4254a8f446ce9763d142, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4383278973302790894, guid: e855b2a061db4254a8f446ce9763d142, type: 3}
+      propertyPath: m_Frequency
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 6228163664365419579, guid: e855b2a061db4254a8f446ce9763d142, type: 3}
       propertyPath: m_LocalPosition.x
