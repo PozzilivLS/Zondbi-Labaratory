@@ -1,3 +1,5 @@
+﻿//TODO: Убрать зависимость от Input.
+using Additions;
 using UnityEngine;
 
 namespace Items
@@ -7,11 +9,17 @@ namespace Items
         [SerializeField] private ItemData _boxData;
         [SerializeField] private ItemData _data;
         [Header("Physic")]
-        [SerializeField] private Rigidbody2D _rigidbody;
+        [SerializeField] private Rigidbody2D _rigidBody;
         [SerializeField] private ItemPhysicsData _boxPhData;
         [SerializeField] private ItemPhysicsData _phData;
         [Header("Image")]
         [SerializeField] private SpriteRenderer _spriteRenderer;
+
+        public event Event<bool> GrabItemStatus;
+
+        private bool _isGrabbed;
+
+        public bool IsGrabbed => _isGrabbed;
 
         public void InitializeAsBox()
         {
@@ -23,11 +31,22 @@ namespace Items
             Initialize(_data, _phData);
         }
 
+        public void HasGrabbed()
+        {
+            _isGrabbed = true;
+        }
+
+        public void DropItem()
+        {
+            _isGrabbed = false;
+            GrabItemStatus?.Invoke(_isGrabbed);
+        }
+
         private void Initialize(ItemData data, ItemPhysicsData phData)
         {
-            _rigidbody.mass = phData.Mass;
-            _rigidbody.linearDamping = phData.LinearDamping;
-            _rigidbody.angularDamping = phData.AngularDamping;
+            _rigidBody.mass = phData.Mass;
+            _rigidBody.linearDamping = phData.LinearDamping;
+            _rigidBody.angularDamping = phData.AngularDamping;
 
             _spriteRenderer.sprite = data.Sprite;
         }

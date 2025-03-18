@@ -10,7 +10,6 @@ namespace Additions
 
         private bool _isInteract;
         private bool _isPaused;
-        private bool _isDrag;
 
         public event Event GrabStateChanged;
         public event Event<bool> PauseStateChanged;
