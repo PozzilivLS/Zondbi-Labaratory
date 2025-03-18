@@ -82,7 +82,7 @@ namespace Player
                 }
             }
 
-            _grabObject = nearestHit.collider.transform;
+            _grabObject = nearestHit.collider.transform.parent;
 
             _grabParent.position = _grabObject.position;
 
