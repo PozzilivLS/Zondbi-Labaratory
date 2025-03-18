@@ -51,24 +51,23 @@ namespace Player
             }
         }
 
-        private void OnGrab(bool isGrab)
+        private void OnGrab()
         {
-            if (isGrab)
-                Grab();
-            else
+            if (_isGrabbing)
                 Realize();
+            else
+                Grab();
         }
 
         private void Grab()
         {
-            _isGrabbing = true;
-
             RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, _grabRadius, Vector2.zero, 0f, _layerMask);
 
             if (hits.Length == 0 )
             {
                 return;
             }
+            _isGrabbing = true;
 
             float minDistance = (transform.position - hits[0].collider.transform.position).sqrMagnitude;
             RaycastHit2D nearestHit = hits[0];
@@ -98,14 +97,14 @@ namespace Player
         {
             if (_isGrabbing && _grabObject != null)
             {
-                _isGrabbing = false;
-
                 _grabObject.parent = null;
                 _grabObjectRb.bodyType = RigidbodyType2D.Dynamic;
                 _grabObjectRb.angularVelocity = _grabRb.angularVelocity;
                 _grabObjectRb.linearVelocity = _grabRb.linearVelocity;
 
             }
+            _isGrabbing = false;
+
             _grabObject = null;
 
             _line.positionCount = 0;

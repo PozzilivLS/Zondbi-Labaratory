@@ -10,8 +10,9 @@ namespace Additions
 
         private bool _isInteract;
         private bool _isPaused;
+        private bool _isDrag;
 
-        public event Event<bool> GrabStateChanged;
+        public event Event GrabStateChanged;
         public event Event<bool> PauseStateChanged;
 
         public bool IsInteract => _isInteract;
@@ -33,20 +34,14 @@ namespace Additions
             _inputActions.Player.Interact.started += OnPlayerBeginInteract;
             _inputActions.Player.Interact.canceled += OnPlayerStopInteract;
 
-            _inputActions.Player.DragObject.started += OnPlayerStartDragObject;
-            _inputActions.Player.DragObject.canceled += OnPlayerStopDragObject;
+            _inputActions.Player.DragObject.started += OnPlayerDragObject;
 
             _inputActions.Player.MenuInGame.started += OnPlayerInteractWithMenu;
         }
 
-        private void OnPlayerStartDragObject(InputAction.CallbackContext context)
+        private void OnPlayerDragObject(InputAction.CallbackContext context)
         {
-            GrabStateChanged?.Invoke(true);
-        }
-
-        private void OnPlayerStopDragObject(InputAction.CallbackContext context)
-        {
-            GrabStateChanged?.Invoke(false);
+            GrabStateChanged?.Invoke();
         }
 
         private void OnPlayerBeginInteract(InputAction.CallbackContext context)
@@ -78,8 +73,7 @@ namespace Additions
             _inputActions.Player.Interact.started -= OnPlayerBeginInteract;
             _inputActions.Player.Interact.canceled -= OnPlayerStopInteract;
 
-            _inputActions.Player.DragObject.started -= OnPlayerStartDragObject;
-            _inputActions.Player.DragObject.canceled -= OnPlayerStopDragObject;
+            _inputActions.Player.DragObject.started -= OnPlayerDragObject;
         }
 
         private void OnDestroy()
