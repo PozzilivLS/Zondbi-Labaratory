@@ -35,13 +35,15 @@ namespace Triggers
                 _activePotion.transform.position = Vector2.Lerp(startPosition, _targetPosition.position, curveValue);
                 yield return null;
             }
+
+            _potionInTrigger = false;
+            _activePotion.GrabItemStatus -= OnPlayerDropPotion;
+            _activePotion = null;
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            var item = collision.GetComponentInParent<Item>();
-
-            if (item)
+            if (collision.TryGetComponent(out Item item))
             {
                 _potionInTrigger = true;
                 _activePotion = item;
@@ -51,9 +53,7 @@ namespace Triggers
 
         private void OnTriggerExit2D(Collider2D collision)
         {
-            var item = collision.GetComponentInParent<Item>();
-
-            if (item)
+            if (collision.TryGetComponent(out Item item))
             {
                 _potionInTrigger = false;
                 _activePotion.GrabItemStatus -= OnPlayerDropPotion;

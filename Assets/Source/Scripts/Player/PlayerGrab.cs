@@ -109,7 +109,7 @@ namespace Player
             }
             _isGrabbing = false;
 
-            _item.DropItem();
+            _item.HasRealized();
             _item = null;
 
             _grabObject = null;

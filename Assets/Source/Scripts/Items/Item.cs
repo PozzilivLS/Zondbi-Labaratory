@@ -34,9 +34,10 @@ namespace Items
         public void HasGrabbed()
         {
             _isGrabbed = true;
+            GrabItemStatus?.Invoke(_isGrabbed);
         }
 
-        public void DropItem()
+        public void HasRealized()
         {
             _isGrabbed = false;
             GrabItemStatus?.Invoke(_isGrabbed);
