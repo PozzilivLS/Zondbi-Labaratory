@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2396248185473979400}
   - component: {fileID: 3676839937561855807}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 25
   m_Sprite: {fileID: -6251451809504726511, guid: eaea104411fa67b4fabda134c6888027, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 7180540575211541831}
   - component: {fileID: 5662841609890126314}
   - component: {fileID: 2343950810152198893}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -201,8 +201,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
+  m_Offset: {x: 0, y: -0.011988759}
+  m_Size: {x: 1, y: 3.638499}
   m_Direction: 0
 --- !u!1 &6266018167290093246
 GameObject:
@@ -214,7 +214,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7510509722687541950}
   - component: {fileID: 1914962185916088244}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Grabbed Object
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -273,7 +273,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7157120438170128507}
   - component: {fileID: 6559286774739518214}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Line
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -428,7 +428,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5012091428129013992}
   - component: {fileID: 7208098478729042201}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: InputHandler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -474,7 +474,7 @@ GameObject:
   - component: {fileID: 211694195476588235}
   - component: {fileID: 4383278973302790894}
   - component: {fileID: 2981775321212034434}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Grab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -576,7 +576,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4467732312677232129}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
